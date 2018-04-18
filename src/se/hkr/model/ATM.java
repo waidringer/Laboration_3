@@ -24,11 +24,15 @@ public class ATM {
             bank = new Bank();
             balance = bank.getBalance(tempID);
 
+            if(balance == -1){
+                errorHandler("Invalid Input", "No user with this ID", "Please enter a valid user ID!", Alert.AlertType.WARNING);
+            }
+
         }catch (Exception e){
             bank = null;
             balance = -1;
 
-            errorHandler("Hejsan", "Hoppsan", "Lillebror");
+            errorHandler("Invalid Input", "Invalid user ID", "Please enter a valid user ID!", Alert.AlertType.ERROR);
         }
 
     }
@@ -37,11 +41,11 @@ public class ATM {
         return balance;
     }
 
-    private void errorHandler(String title, String header, String message){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error Dialog");
-        alert.setHeaderText("Look, an Error Dialog");
-        alert.setContentText("Ooops, there was an error!");
+    private void errorHandler(String title, String header, String message, Alert.AlertType type){
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(message);
 
         alert.showAndWait();
     }
