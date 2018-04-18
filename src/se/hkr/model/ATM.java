@@ -1,23 +1,48 @@
 package se.hkr.model;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+//Rember to remove in finished product
+import javafx.scene.control.Alert;
+import se.hkr.mock.Bank;
 
-public class ATM extends Application {
+public class ATM {
 
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/se/hkr/view/mainView.fxml"));
-        primaryStage.setTitle("ATM");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+    private Bank bank;
+    private int userID;
+    private double balance;
+
+    public ATM(String userID) {
+
+
+
+        try{
+            int tempID = Integer.parseInt(userID);
+
+            if(tempID<0){
+                throw new Exception();
+            }
+
+            bank = new Bank();
+            balance = bank.getBalance(tempID);
+
+        }catch (Exception e){
+            bank = null;
+            balance = -1;
+
+            errorHandler("Hejsan", "Hoppsan", "Lillebror");
+        }
+
     }
 
+    public double getBalance() {
+        return balance;
+    }
 
-    public static void main(String[] args) {
-        launch(args);
+    private void errorHandler(String title, String header, String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error Dialog");
+        alert.setHeaderText("Look, an Error Dialog");
+        alert.setContentText("Ooops, there was an error!");
+
+        alert.showAndWait();
     }
 }
