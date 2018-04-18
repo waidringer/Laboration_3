@@ -1,4 +1,4 @@
 package se.hkr.controller;
 
-public class Controller {
+public class mainController {
 }

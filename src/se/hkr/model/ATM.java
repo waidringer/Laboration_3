@@ -10,7 +10,7 @@ public class ATM extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/se/hkr/view/mainView.fxml"));
         primaryStage.setTitle("ATM");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
