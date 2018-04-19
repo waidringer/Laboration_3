@@ -6,6 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import se.hkr.model.Atm;
 
+import java.text.DecimalFormat;
+
 public class Controller {
 
     @FXML private Label balanceField;
@@ -14,8 +16,8 @@ public class Controller {
     @FXML
     private void handleButton(ActionEvent ae){
         Atm atm = new Atm(idField.getText());
-
-        balanceField.setText(atm.getBalance() + "");
+        DecimalFormat df = new DecimalFormat("#.00");
+        balanceField.setText(df.format(atm.getBalance()) + "");
     }
 
 }
