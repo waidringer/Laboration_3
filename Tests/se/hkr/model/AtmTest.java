@@ -3,11 +3,9 @@ package se.hkr.model;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+public class AtmTest {
 
-public class ATMTest {
-
-    private ATM atm = new ATM("1234");
+    private Atm atm = new Atm("1234");
 
     @Test
     public void getBalance() throws Exception {

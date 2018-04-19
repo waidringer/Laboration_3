@@ -4,13 +4,13 @@ package se.hkr.model;
 import javafx.scene.control.Alert;
 import se.hkr.mock.Bank;
 
-public class ATM {
+public class Atm {
 
     private Bank bank;
     private int userID;
     private double balance;
 
-    public ATM(String userID) {
+    public Atm(String userID) {
 
 
 
