@@ -29,9 +29,12 @@ public class Bank {
             preparedStatement.setInt(1, userId);
             resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()) {
+            if (resultSet.next()) {
                 balance = resultSet.getDouble(1);
+            } else {
+                return -1;
             }
+
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -39,7 +42,11 @@ public class Bank {
             close();
         }
 
-        return balance;
+        if (balance >= 0) {
+            return balance;
+        } else {
+            return -1;
+        }
     }
 
 
